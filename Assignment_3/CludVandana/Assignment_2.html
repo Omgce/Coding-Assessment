@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment_2</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Assignment</h1>      
+  </div>
+</div>
+   <form>
+  <div class="form-group">
+    <label for="abc">Enter a Sentence</label>
+    <input id="string" type="text" class="form-control" placeholder="Enter a Sentence (any English sentence)" id="abc">
+  </div>
+  <div class="form-group">
+    <label for="ltr">Enter a Letter</label>
+    <input id="letter" type="text" class="form-control" placeholder="Enter a Letter (any letter from A to Z)" id="ltr">
+  </div>
+
+  <button id="button" type="submit" class="btn btn-primary">Submit</button>
+</form> 
+  <div>
+  	<p id="result"></p>
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+	document.getElementById("button").onclick = 
+    function() {        
+        var str = document.getElementById("string").value.toLowerCase();
+        console.log("The string you entered: ", str)
+        var letter = document.getElementById("letter").value.toLowerCase();
+        console.log("The letter you entered: ", letter)
+
+        //var letterCheck = str.includes(letter)
+        //var letterCeck = str.indexOf(letter) !== -1
+        if(str.indexOf(letter) == -1) {
+            alert("The Letter does not exist in the sentence")
+        }
+        else {
+            var afterLetter = str.substring(str.indexOf(letter)+1);
+           // console.log("Substring:",afterLetter)
+           alert("Result: "+afterLetter);
+            document.getElementById("result").innerHTML = "<h3> Result: "+afterLetter+"</h3>";
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment_1</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<div class="container">
+	<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Assignment</h1>      
+  </div>
+</div>
+      <div class="table-responsive">
+      	<table id="tbl" class="table table-bordered">
+      		<thead class="header">
+      			<tr>
+      				<th>SL.No.</th>
+      				<th>First Name</th>
+      				<th>Last Name</th>
+      				<th>City</th>
+      				<th>Country</th>
+      			</tr>
+      		</thead>
+      		<tbody>
+      			<tr class="rows">
+      				<td>1</td>
+      				<td>Suraj</td>
+      				<td>Prakash</td>
+      				<td>Patna</td>
+      				<td>India</td>
+      			</tr>
+      			<tr class="rows">
+      				<td>2</td>
+      				<td>Suraj</td>
+      				<td>Prakash</td>
+      				<td>Patna</td>
+      				<td>India</td>
+      			</tr>
+      			<tr class="rows">
+      				<td>3</td>
+      				<td>Suraj</td>
+      				<td>Prakash</td>
+      				<td>Patna</td>
+      				<td>India</td>
+      			</tr>
+      			<tr class="rows">
+      				<td>4</td>
+      				<td>Suraj</td>
+      				<td>Prakash</td>
+      				<td>Patna</td>
+      				<td>India</td>
+      			</tr>
+      			<tr class="rows">
+      				<td>5</td>
+      				<td>Suraj</td>
+      				<td>Prakash</td>
+      				<td>Patna</td>
+      				<td>India</td>
+      			</tr>
+      		</tbody>
+      	</table>
+      </div>
+       <button id="btnAddBelow" class=" btn btn-primary btnAdd">Add row to bottom</button> 
+       <button id="btnAddAbove" class="btn btn-primary btnAdd">Add row to top</button>
+       
+	</div>
+<table>
+</table>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+   // Bind to click event on buttons
+$(".btnAdd").on("click", function(){
+    // Get highest existing number and add 1
+  let rowNum = parseInt(getHighestNumber()) + 1;
+  // The next 4 lines should be populated with values from elsewhere
+  let firstname = "Om";
+  let lastname = "Prakash";
+  let city = "LKR";
+  let country = "India";
+  // Build HTML to insert
+    let html = `<tbody><tr class="rows">
+    <td>${rowNum}</td>
+    <td>${firstname}</td>
+    <td>${lastname}</td>
+    <td>${city}</td>
+    <td>${country}</td>
+  </tr></tbody>`;
+  // Get which button was clicked
+  let btn = $(this).attr("id");
+  if (btn=="btnAddAbove") {
+    // Insert the HTML after the header row, i.e. first in the actual table
+    $(".header").after(html);
+  } else if (btn=="btnAddBelow") {
+    // Append the new row at the end of the table
+    $("#tbl").append(html);
+  }
+});
+
+function getHighestNumber() {
+  let highest = 0;
+  // Select the first column of each row
+    let firstCol = $("#tbl tr td:first-child");
+  firstCol.each( function(index) {
+    // Get number in first column
+    let num = $(this).html();
+    if (num > highest) {
+      highest = num;
+    }
+  });
+  return highest;
+}
+</script>
+</html>
